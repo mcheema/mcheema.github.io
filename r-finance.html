@@ -12,33 +12,33 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">R Finance</h1>
-<div id="outline-container-org12b2b77" class="outline-2">
-<h2 id="org12b2b77">Developing R routines to use for financial valuation, decision making and analysis</h2>
-<div class="outline-text-2" id="text-org12b2b77">
+<div id="outline-container-orgca337dc" class="outline-2">
+<h2 id="orgca337dc">Developing R routines to use for financial valuation, decision making and analysis</h2>
+<div class="outline-text-2" id="text-orgca337dc">
 </div>
-<div id="outline-container-orge7b5aba" class="outline-3">
-<h3 id="orge7b5aba">Black Scholes</h3>
-<div class="outline-text-3" id="text-orge7b5aba">
+<div id="outline-container-org196901b" class="outline-3">
+<h3 id="org196901b">Black Scholes</h3>
+<div class="outline-text-3" id="text-org196901b">
 <div class="org-src-container">
-<pre class="src src-R">K &lt;- 50
-S &lt;- 40
-sigma &lt;- 0.2
-mu &lt;- .05
-r &lt;- .02
-expiry &lt;- 252
-days.in.year &lt;- 252
-current.t &lt;- 0
-time.to.expiration &lt;- (expiry - current.t)/days.in.year
+<pre class="src src-R">K <span style="font-weight: bold; text-decoration: underline;">&lt;-</span> 50
+S <span style="font-weight: bold; text-decoration: underline;">&lt;-</span> 40
+sigma <span style="font-weight: bold; text-decoration: underline;">&lt;-</span> 0.2
+mu <span style="font-weight: bold; text-decoration: underline;">&lt;-</span> .05
+r <span style="font-weight: bold; text-decoration: underline;">&lt;-</span> .02
+expiry <span style="font-weight: bold; text-decoration: underline;">&lt;-</span> 252
+days.in.year <span style="font-weight: bold; text-decoration: underline;">&lt;-</span> 252
+current.t <span style="font-weight: bold; text-decoration: underline;">&lt;-</span> 0
+time.to.expiration <span style="font-weight: bold; text-decoration: underline;">&lt;-</span> (expiry - current.t)/days.in.year
 
-### From http://www.espenhaug.com/black_scholes.html
-call.value &lt;- function(S,X,t,r,v) {
-  d1 &lt;- (log(S/X)+(r+0.5*v^2)*t)/(v*sqrt(t))
-  d2 &lt;- d1-v*sqrt(t)
+<span style="font-weight: bold; font-style: italic;">### </span><span style="font-weight: bold; font-style: italic;">From http://www.espenhaug.com/black_scholes.html</span>
+<span style="font-weight: bold;">call.value</span> <span style="font-weight: bold; text-decoration: underline;">&lt;-</span> <span style="font-weight: bold;">function</span>(S,X,t,r,v) {
+  d1 <span style="font-weight: bold; text-decoration: underline;">&lt;-</span> (log(S/X)+(r+0.5*v^2)*t)/(v*sqrt(t))
+  d2 <span style="font-weight: bold; text-decoration: underline;">&lt;-</span> d1-v*sqrt(t)
   S*pnorm(d1)-X*exp(-r*t)*pnorm(d2)
 }
-put.value  &lt;- function(S,X,t,r,v) {
-  d1 &lt;- (log(S/X)+(r+0.5*v^2)*t)/(v*sqrt(t))
-  d2 &lt;- d1-v*sqrt(t)
+<span style="font-weight: bold;">put.value</span>  <span style="font-weight: bold; text-decoration: underline;">&lt;-</span> <span style="font-weight: bold;">function</span>(S,X,t,r,v) {
+  d1 <span style="font-weight: bold; text-decoration: underline;">&lt;-</span> (log(S/X)+(r+0.5*v^2)*t)/(v*sqrt(t))
+  d2 <span style="font-weight: bold; text-decoration: underline;">&lt;-</span> d1-v*sqrt(t)
   X*exp(-r*t)*pnorm(-d2)-S*pnorm(-d1)
 }
 </pre>
